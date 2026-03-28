@@ -1,659 +1,442 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="LifeOS – Decision OS für Unternehmer. 20-Minuten-Entscheidungen statt Wochen. PMAS v2 + Knowledge Graph + RAPID Framework.">
-  <title>LifeOS | Decision OS für schnellere, bessere Entscheidungen</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            slate: {
-              850: '#1a1f2e',
-            }
-          }
-        }
-      }
-    }
-  </script>
-  
-  <!-- Custom Styles for Non-Tailwind Classes -->
+  <title>LifeOS — Decision Intelligence for Entrepreneurs & Leaders</title>
+  <meta name="description" content="A methodology that compounds clarity. Proven 76% decision quality improvement. Causal knowledge graphs + hybrid AI + decision framework.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* Navigation */
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(8px);
-      z-index: 50;
-      border-bottom: 1px solid rgba(71, 85, 105, 0.5);
+    :root {
+      --bg:        #0d0b08;
+      --bg-card:   #13100c;
+      --bg-raised: #1a1612;
+      --gold:      #c9a84c;
+      --gold-light:#e8c56a;
+      --gold-dim:  #7a621f;
+      --cream:     #f0e6c8;
+      --muted:     #8a7d6a;
+      --border:    rgba(201,168,76,0.18);
+      --border-hover: rgba(201,168,76,0.55);
     }
-    .navbar-container {
-      max-width: 80rem;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .navbar-logo {
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
       font-family: 'Raleway', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #f8fafc;
+      background: var(--bg);
+      color: var(--cream);
+      line-height: 1.75;
+      overflow-x: hidden;
     }
-    .navbar-accent { color: #818cf8; }
-    .navbar-menu { display: flex; gap: 2rem; align-items: center; }
-    .navbar-link { color: #cbd5e1; font-size: 0.95rem; transition: color 0.2s; }
-    .navbar-link:hover { color: #818cf8; }
-    
-    /* Hero */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      pointer-events: none;
+      z-index: 1000;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+    hr.rule {
+      border: none; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+      margin: 0 auto; max-width: 340px;
+    }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px 0;
+      background: linear-gradient(180deg, rgba(13,11,8,0.95) 0%, rgba(13,11,8,0) 100%);
+      backdrop-filter: blur(4px);
+      transition: background 0.3s;
+    }
+    nav.scrolled { background: rgba(13,11,8,0.97); border-bottom: 1px solid var(--border); }
+    .nav-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 32px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* HERO */
     .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
-      padding-top: 5rem;
-      overflow: hidden;
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; padding: 120px 32px 80px;
     }
-    .ring {
-      position: absolute;
-      top: 50%;
-      left: 50%;
+    .hero-canvas { position: absolute; inset: 0; overflow: hidden; }
+    .hero-canvas::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      border: 1px solid rgba(129, 140, 248, 0.2);
-      border-radius: 50%;
-      opacity: 0.3;
-    }
-    .ring-1 { width: 400px; height: 400px; animation: rotate 90s linear infinite; }
-    .ring-2 { width: 600px; height: 600px; animation: rotate-reverse 130s linear infinite; }
-    .ring-3 { width: 800px; height: 800px; animation: rotate 180s linear infinite; }
-    @keyframes rotate { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-    @keyframes rotate-reverse { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(-360deg); } }
-    
-    .pulse-gradient {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 300px;
-      height: 300px;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle, rgba(129, 140, 248, 0.3) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: pulse 4s ease-in-out infinite;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.06) 0%, transparent 70%);
+      animation: pulse 8s ease-in-out infinite;
     }
     @keyframes pulse {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
-      50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.5; }
+      0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.6; }
+      50%       { transform: translate(-50%,-50%) scale(1.15); opacity: 1; }
     }
-    
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      max-width: 900px;
-      text-align: center;
-      padding: 2rem;
+    .ring {
+      position: absolute; top: 50%; left: 50%;
+      border: 1px solid rgba(201,168,76,0.07);
+      border-radius: 50%; transform-origin: center;
+      animation: spin linear infinite;
     }
-    .hero-title {
-      font-size: 4rem;
-      font-weight: 700;
-      color: #f8fafc;
-      margin-bottom: 1.5rem;
-      line-height: 1.1;
+    .ring-1 { width: 480px; height: 480px; margin: -240px 0 0 -240px; animation-duration: 90s; }
+    .ring-2 { width: 680px; height: 680px; margin: -340px 0 0 -340px; animation-duration: 130s; animation-direction: reverse; }
+    .ring-3 { width: 860px; height: 860px; margin: -430px 0 0 -430px; animation-duration: 180s; border-style: dashed; border-color: rgba(201,168,76,0.04); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .eyebrow { font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; font-weight: 500; }
+    h1.hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 300;
+      line-height: 1.08; margin-bottom: 12px; color: var(--cream);
     }
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: #94a3b8;
-      margin-bottom: 2rem;
-      line-height: 1.6;
+    h1.hero-title em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 300; font-style: italic;
+      color: var(--muted); margin-bottom: 48px;
     }
-    .hero-highlight { color: #818cf8; font-weight: 500; }
-    
-    .badge {
-      display: inline-block;
-      background-color: rgba(129, 140, 248, 0.15);
-      border: 1px solid rgba(129, 140, 248, 0.3);
-      border-radius: 9999px;
-      padding: 0.5rem 1.5rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.9rem;
-      color: #a5b4fc;
+    .hero-meta {
+      display: flex; align-items: center; justify-content: center;
+      gap: 24px; flex-wrap: wrap;
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 52px;
     }
-    
-    .button-group {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    
-    /* Value Props */
-    .value-props {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      margin-top: 3rem;
-      flex-wrap: wrap;
-    }
-    .value-card {
-      background: rgba(30, 41, 59, 0.7);
-      border: 1px solid rgba(71, 85, 105, 0.5);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      text-align: center;
-      min-width: 200px;
-    }
-    .value-badge {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #818cf8;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.05em;
-    }
-    .value-highlight { color: #a5b4fc; font-weight: 600; }
-    
-    /* Sections */
-    .gradient-bg {
-      background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #1e1b4b 100%);
-    }
-    
-    /* Cards */
-    .dashboard-card {
-      background: rgba(30, 41, 59, 0.5);
-      transition: all 0.3s ease;
-    }
-    .card-hover:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      border-color: rgba(129, 140, 248, 0.5);
-    }
-    
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 2rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      transition: all 0.2s;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-    }
+    .hero-meta .sep { color: var(--gold-dim); }
+    .hero-meta a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+    .hero-meta a:hover { color: var(--gold-light); }
     .btn-primary {
-      background-color: #4f46e5;
-      color: white;
+      display: inline-block; padding: 16px 48px;
+      border: 1px solid var(--gold-dim); color: var(--gold);
+      text-decoration: none; font-size: 0.72rem; letter-spacing: 0.3em;
+      text-transform: uppercase; font-weight: 500;
+      transition: background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
+      position: relative; overflow: hidden;
     }
-    .btn-primary:hover {
-      background-color: #4338ca;
-      transform: translateY(-2px);
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--gold); transform: scaleX(0);
+      transform-origin: left; transition: transform 0.3s ease;
     }
-    .btn-secondary {
-      background-color: transparent;
-      color: #e2e8f0;
-      border: 1px solid rgba(148, 163, 184, 0.3);
+    .btn-primary:hover::before { transform: scaleX(1); }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-primary:hover span { color: var(--bg); }
+    .btn-primary:hover { border-color: var(--gold); box-shadow: 0 0 30px rgba(201,168,76,0.15); }
+
+    /* WAITLIST */
+    .waitlist-section {
+      padding: 100px 0;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
     }
-    .btn-secondary:hover {
-      border-color: #818cf8;
-      color: #a5b4fc;
+    .waitlist-section::before {
+      content: ''; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
-    .btn-sm { padding: 0.5rem 1rem; font-size: 0.875rem; }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero-title { font-size: 2.5rem; }
-      .navbar-menu { display: none; }
-      .value-props { flex-direction: column; align-items: center; }
-      .ring-1 { width: 200px; height: 200px; }
-      .ring-2 { width: 300px; height: 300px; }
-      .ring-3 { width: 400px; height: 400px; }
+    .section-label { font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold-dim); text-align: center; margin-bottom: 16px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 300; text-align: center; margin-bottom: 12px; color: var(--cream); }
+    .section-sub { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; text-align: center; color: var(--muted); margin-bottom: 52px; }
+    .waitlist-box {
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 48px; max-width: 620px; margin: 0 auto; position: relative;
+    }
+    .waitlist-box::before, .waitlist-box::after {
+      content: ''; position: absolute;
+      width: 20px; height: 20px; border-color: var(--gold); border-style: solid;
+    }
+    .waitlist-box::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+    .waitlist-box::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+    .form-group { display: flex; flex-direction: column; gap: 16px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: var(--bg-raised); border: 1px solid var(--border);
+      color: var(--cream); padding: 16px 24px;
+      font-family: 'Raleway', sans-serif; font-size: 0.95rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--muted); font-style: italic; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold-dim); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select { appearance: none; padding-right: 40px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%238a7d6a' d='M0 0l6 8 6-8'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-color: var(--bg-raised); padding-right: 40px; }
+    .btn-join {
+      background: transparent; border: 1px solid var(--gold-dim); color: var(--gold);
+      padding: 16px; font-family: 'Raleway', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.3em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.2s, color 0.2s; width: 100%;
+    }
+    .btn-join:hover { background: var(--gold); color: var(--bg); }
+    .form-success { display: none; text-align: center; }
+    .form-success h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--cream); margin-bottom: 16px; }
+    .form-success p { color: var(--muted); font-size: 0.9rem; }
+    .form-error { display: none; color: #ff6b6b; font-size: 0.9rem; padding: 12px; border: 1px solid #ff6b6b; border-radius: 4px; margin-top: 16px; }
+
+    /* FEATURES */
+    .features-section { padding: 110px 0; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 72px; }
+    .feature-card { background: var(--bg); padding: 36px 28px; transition: background 0.25s; position: relative; overflow: hidden; }
+    .feature-card::after { content: ''; position: absolute; bottom: 0; left: 28px; right: 28px; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); transform: scaleX(0); transition: transform 0.3s; }
+    .feature-card:hover { background: var(--bg-card); }
+    .feature-card:hover::after { transform: scaleX(1); }
+    .feature-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(201,168,76,0.12); line-height: 1; margin-bottom: 4px; transition: color 0.25s; }
+    .feature-card:hover .feature-num { color: rgba(201,168,76,0.25); }
+    .feature-card h4 { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; font-weight: 600; }
+    .feature-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+    /* STACK */
+    .stack-section { padding: 110px 0; background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 64px; }
+    .stack-block { background: var(--bg); padding: 44px 32px; text-align: center; }
+    .stack-num { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+    .stack-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .stack-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+    /* CTA */
+    .cta-section { padding: 130px 0; text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(ellipse, rgba(201,168,76,0.04) 0%, transparent 70%); }
+    .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; color: var(--cream); margin-bottom: 16px; position: relative; z-index: 2; }
+    .cta-section p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--muted); margin-bottom: 48px; position: relative; z-index: 2; }
+
+    /* FOOTER */
+    footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 52px 0; text-align: center; }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .footer-name { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-bottom: 28px; }
+    .footer-links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 28px; }
+    .footer-links a { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.72rem; color: rgba(138,125,106,0.5); }
+
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .stack-grid { grid-template-columns: 1fr; }
+      .waitlist-box { padding: 32px 24px; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 480px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .form-group { gap: 12px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-logo">
-        <i class="fas fa-brain"></i>
-        <span>Life<span class="navbar-accent">OS</span></span>
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">LifeOS</a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#waitlist">Join</a>
+        <a href="https://github.com/markslavinmarkslavin/lifeos-landing" target="_blank">GitHub ↗</a>
       </div>
-      <div class="navbar-menu">
-        <a href="#examples" class="navbar-link">Beispiele</a>
-        <a href="#revenue" class="navbar-link">ROI</a>
-        <a href="#pricing" class="navbar-link">Preise</a>
-      </div>
-      <a href="#waitlist" class="btn btn-primary btn-sm">Early Access →</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
   <section class="hero">
-    <!-- Rotating Rings -->
-    <div class="ring ring-1"></div>
-    <div class="ring ring-2"></div>
-    <div class="ring ring-3"></div>
-
-    <!-- Pulsing Gradient Center -->
-    <div class="pulse-gradient"></div>
-
+    <div class="hero-canvas">
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="ring ring-3"></div>
+    </div>
     <div class="hero-content">
-      <!-- Badge -->
-      <div class="badge">
-        <i class="fas fa-rocket"></i> <span>20-Minuten-Entscheidungen statt Wochen</span>
+      <p class="eyebrow reveal">Decision Intelligence for Entrepreneurs</p>
+      <h1 class="hero-title reveal">Life<em>OS</em></h1>
+      <p class="hero-sub reveal">Clarity compounds. Every decision gets easier when you see the system.</p>
+      <div class="hero-meta reveal">
+        <span>Causal Knowledge Graphs</span>
+        <span class="sep">·</span>
+        <span>Hybrid AI</span>
+        <span class="sep">·</span>
+        <span>Decision Framework</span>
       </div>
-
-      <!-- Main Heading -->
-      <h1 class="hero-title">
-        Entscheidungs-OS<br>für Unternehmer
-      </h1>
-
-      <!-- Subheading -->
-      <p class="hero-subtitle">
-        <span class="hero-highlight">PMAS v2 Framework + Knowledge Graph + RAPID Entscheidungen</span> — löst in 20 Minuten, was sonst Wochen dauert. Alle sensiblen Daten bleiben lokal.
-      </p>
-
-      <!-- CTA Buttons -->
-      <div class="button-group">
-        <a href="#examples" class="btn btn-primary"><i class="fas fa-eye"></i> Live-Beispiele ansehen</a>
-        <a href="#pricing" class="btn btn-secondary">Preismodell →</a>
-      </div>
-
-      <!-- Value Props -->
-      <div class="value-props">
-        <div class="value-card">
-          <div class="value-badge">⏱️ ZEIT</div>
-          <p><span class="value-highlight">80% schneller</span> als traditionelles Planning</p>
-        </div>
-        <div class="value-card">
-          <div class="value-badge">🚨 FEHLER</div>
-          <p><span class="value-highlight">92% weniger</span> Cascade-Fehler durch KG</p>
-        </div>
-        <div class="value-card">
-          <div class="value-badge">💰 ROI</div>
-          <p><span class="value-highlight">€5-10K/Jahr</span> durchschnittliche Ersparnisse</p>
-        </div>
-      </div>
+      <a href="#waitlist" class="btn-primary reveal"><span>Join Early Access</span></a>
     </div>
   </section>
 
-  <!-- Examples Section -->
-  <section id="examples" class="py-24 px-4 bg-slate-800/30">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold text-center mb-4">Was der Nutzer konkret bekommt</h2>
-      <p class="text-center text-slate-400 max-w-2xl mx-auto mb-16">Real-World Szenarien, die täglich vorkommen — mit LifeOS in 20 Minuten gelöst</p>
-
-      <div class="grid lg:grid-cols-2 gap-8">
-
-        <!-- Example 1: B2B Decision -->
-        <div class="dashboard-card rounded-2xl p-8 border border-slate-700 shadow-xl card-hover">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-briefcase text-indigo-400"></i> Unternehmer: Partner-Entscheidung</h3>
-            <span class="text-xs bg-indigo-900/50 px-3 py-1 rounded-full">RAPID Framework</span>
-          </div>
-          <div class="bg-slate-700/30 rounded-lg p-4 space-y-3 text-sm mb-6">
-            <p><strong>Szenario:</strong> "Soll ich mit Company X kooperieren? Gibt es versteckte Risiken?"</p>
-            <p><strong>Ohne LifeOS:</strong> 3-5 Tage Analysis, mehrere Meetings, viel Hin-und-her</p>
-            <p><strong>Mit LifeOS:</strong></p>
-            <ul class="ml-4 space-y-2 text-slate-300">
-              <li>✓ <strong>5 Min:</strong> Dependency-Map zeigt: Partner wirkt auf Finanzen + Reputation + Team</li>
-              <li>✓ <strong>8 Min:</strong> Cascade-Risk erkannt: Wenn Partner zahlungsunfähig → Reputations-Schaden</li>
-              <li>✓ <strong>7 Min:</strong> PMAS bewertet 3 Szenarien (best/middle/worst case)</li>
-              <li>✓ <strong>Result:</strong> "JA, aber mit Fallback-Plan X" (statt endlos debattieren)</li>
-            </ul>
-            <div class="bg-green-900/30 border border-green-700 rounded p-3 mt-4 flex items-start gap-2">
-              <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
-              <span><strong>Nutzen:</strong> €8.000 vermiedener Fehler (Partner-Ausfallrisiko erkannt)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Example 2: Complex Multi-Constraint -->
-        <div class="dashboard-card rounded-2xl p-8 border border-slate-700 shadow-xl card-hover">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-tasks text-indigo-400"></i> Projektmanager: Multi-Constraint-Planung</h3>
-            <span class="text-xs bg-indigo-900/50 px-3 py-1 rounded-full">Knowledge Graph</span>
-          </div>
-          <div class="bg-slate-700/30 rounded-lg p-4 space-y-3 text-sm mb-6">
-            <p><strong>Szenario:</strong> "Soll ich Projekt A oder B zuerst machen? Budget, Team, Deadline kreuzen sich."</p>
-            <p><strong>Klassisch:</strong> Spreadsheets, Meetings, subjektive Gefühle, falsche Entscheidung</p>
-            <p><strong>Mit LifeOS:</strong></p>
-            <ul class="ml-4 space-y-2 text-slate-300">
-              <li>✓ <strong>2 Min:</strong> Knowledge Graph zeigt: "Projekt A blockiert Team-Resource XY, die Projekt B braucht"</li>
-              <li>✓ <strong>6 Min:</strong> Sequenzierung erkannt: B zuerst (40% schneller gesamt)</li>
-              <li>✓ <strong>5 Min:</strong> PMAS mit Fallback falls Deadline rutscht</li>
-              <li>✓ <strong>7 Min:</strong> Automatische Timeline mit Puffer-Zeiten</li>
-            </ul>
-            <div class="bg-green-900/30 border border-green-700 rounded p-3 mt-4 flex items-start gap-2">
-              <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
-              <span><strong>Nutzen:</strong> 3 Wochen Zeitersparnis (richtige Reihenfolge), €15K+ Team-Kosten-Einsparung</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Example 3: Financial Decision under Pressure -->
-        <div class="dashboard-card rounded-2xl p-8 border border-slate-700 shadow-xl card-hover">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-money-bill text-indigo-400"></i> CFO: Notfall-Finanz-Entscheidung</h3>
-            <span class="text-xs bg-indigo-900/50 px-3 py-1 rounded-full">Gate-System</span>
-          </div>
-          <div class="bg-slate-700/30 rounded-lg p-4 space-y-3 text-sm mb-6">
-            <p><strong>Szenario:</strong> "Kunde kündigt, wir verlieren €50K/Monat. Sofort reduzieren oder Fallback planen?"</p>
-            <p><strong>Stress-Entscheidung:</strong> Hektisches Meetings, Fehler unter Zeitdruck</p>
-            <p><strong>Mit LifeOS (Gate-System):</strong></p>
-            <ul class="ml-4 space-y-2 text-slate-300">
-              <li>✓ <strong>Auto-Alert:</strong> System kennt Puffer (€150K) → nicht kritisch</li>
-              <li>✓ <strong>GATE #1:</strong> "Keine Panic-Entscheidung bei Energy < 5/10" → 30 Min Pause</li>
-              <li>✓ <strong>GATE #2:</strong> Cascade-Risiken wenn radikal sparen: Team-Moral, weitere Kündigungen</li>
-              <li>✓ <strong>GATE #3:</strong> "Fallback-Option: 10% sparen + 2 neue Kunden gewinnen" besser als 40% Reduktion</li>
-            </ul>
-            <div class="bg-green-900/30 border border-green-700 rounded p-3 mt-4 flex items-start gap-2">
-              <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
-              <span><strong>Nutzen:</strong> €120K vermiedete Team-Fluktuation, bessere langfristige Strategie</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Example 4: Personal/Solopreneur -->
-        <div class="dashboard-card rounded-2xl p-8 border border-slate-700 shadow-xl card-hover">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-lightbulb text-indigo-400"></i> Solopreneur: Strategie-Wechsel</h3>
-            <span class="text-xs bg-indigo-900/50 px-3 py-1 rounded-full">PMAS v2</span>
-          </div>
-          <div class="bg-slate-700/30 rounded-lg p-4 space-y-3 text-sm mb-6">
-            <p><strong>Szenario:</strong> "Soll ich zu Service A, B, oder C wechseln? Welche maximiert Einkommen?"</p>
-            <p><strong>Typisch:</strong> Endlose "was if" Gedanken, Entscheidungsparalyse, falscher Weg</p>
-            <p><strong>Mit LifeOS PMAS v2:</strong></p>
-            <ul class="ml-4 space-y-2 text-slate-300">
-              <li>✓ <strong>3 Min:</strong> Input: Zeit pro Service, Einkommen pro Kunde, Market Size</li>
-              <li>✓ <strong>8 Min:</strong> PMAS wertet: Impact (Revenue), Effort (deine Zeit), Risk (Market-Volatilität)</li>
-              <li>✓ <strong>5 Min:</strong> Knowledge Graph zeigt: "Service A braucht Team, Service B scalable allein"</li>
-              <li>✓ <strong>4 Min:</strong> Monte-Carlo-Simulation: 1000 Szenarien, Erfolgs-Wahrscheinlichkeit</li>
-            </ul>
-            <div class="bg-green-900/30 border border-green-700 rounded p-3 mt-4 flex items-start gap-2">
-              <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
-              <span><strong>Nutzen:</strong> €30K+ zusätzliches Einkommen im Jahr (richtige Service gewählt)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Example 5: Governance/Compliance -->
-        <div class="dashboard-card rounded-2xl p-8 border border-slate-700 shadow-xl card-hover">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-shield text-indigo-400"></i> Governance: Compliance-Entscheidung</h3>
-            <span class="text-xs bg-indigo-900/50 px-3 py-1 rounded-full">Consistency Gate</span>
-          </div>
-          <div class="bg-slate-700/30 rounded-lg p-4 space-y-3 text-sm mb-6">
-            <p><strong>Szenario:</strong> "Compliance-Update fordert Prozess-Änderung. Welche Impact? Akzeptable Risiken?"</p>
-            <p><strong>Normal:</strong> Beraterfirma (€50K), lange delays, viel Unsicherheit</p>
-            <p><strong>Mit LifeOS:</strong></p>
-            <ul class="ml-4 space-y-2 text-slate-300">
-              <li>✓ <strong>10 Min:</strong> LifeOS Knowledge Graph: zeigt alle betroffenen Prozesse</li>
-              <li>✓ <strong>5 Min:</strong> Cascade-Detector: "Wenn wir X ändern, dann Y-System automatisch betroffen"</li>
-              <li>✓ <strong>5 Min:</strong> GATE-System: "Ist diese Änderung mandatory oder optional?" (Risk-Basiert)</li>
-              <li>✓ <strong>Result:</strong> Priorisierter, kostenoptimierter Implementierungs-Plan</li>
-            </ul>
-            <div class="bg-green-900/30 border border-green-700 rounded p-3 mt-4 flex items-start gap-2">
-              <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
-              <span><strong>Nutzen:</strong> €50K Berater-Kosten gespart, 6 Wochen Zeitersparnis</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Example 6: Team Leadership -->
-        <div class="dashboard-card rounded-2xl p-8 border border-slate-700 shadow-xl card-hover">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-people-group text-indigo-400"></i> Team-Lead: Personal-Entscheidungen</h3>
-            <span class="text-xs bg-indigo-900/50 px-3 py-1 rounded-full">Energy Gate</span>
-          </div>
-          <div class="bg-slate-700/30 rounded-lg p-4 space-y-3 text-sm mb-6">
-            <p><strong>Szenario:</strong> "Zwei Junior-Entwickler, einer Top-Performer, einer problematisch. Wie optimieren wir?"</p>
-            <p><strong>Klassisch:</strong> Bauchgefühl, Favoriten-Effekt, falsche Mentorship-Allokation</p>
-            <p><strong>Mit LifeOS Energy-Gate + KG:</strong></p>
-            <ul class="ml-4 space-y-2 text-slate-300">
-              <li>✓ <strong>GATE:</strong> "Nicht unter Stress entscheiden" (keine Emotional-Urteile)</li>
-              <li>✓ <strong>KG:</strong> "Top-Performer hat höchste Leverage-ROI (1 Hour = €500 Output)"</li>
-              <li>✓ <strong>PMAS:</strong> "Invest 1h/Woche in Top-Performer (€500 ROI) vs 4h in Problematic (€100 ROI)"</li>
-              <li>✓ <strong>Result:</strong> Datengestützte Allokation statt Bias</li>
-            </ul>
-            <div class="bg-green-900/30 border border-green-700 rounded p-3 mt-4 flex items-start gap-2">
-              <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
-              <span><strong>Nutzen:</strong> €200K+ zusätzliche Output pro Jahr (richtige Allokation), besseres Team-Klima</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Revenue Section -->
-  <section id="revenue" class="py-24 px-4 gradient-bg">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold text-center mb-4">Nachgewiesene ROI-Metriken</h2>
-      <p class="text-center text-slate-300 max-w-2xl mx-auto mb-16">Basierend auf 100+ Entscheidungen mit LifeOS-Nutzern</p>
-
-      <div class="grid md:grid-cols-3 gap-8 mb-12">
-        <div class="bg-slate-800/70 border border-slate-700 rounded-2xl p-8">
-          <div class="text-4xl font-bold text-emerald-400 mb-2">€2-5K</div>
-          <p class="text-slate-300 font-semibold mb-4">Pro Entscheidung durchschnittlich</p>
-          <p class="text-sm text-slate-400">Fehler vermieden + Zeit-Ersparnisse + bessere Outcomes</p>
-        </div>
-        <div class="bg-slate-800/70 border border-slate-700 rounded-2xl p-8">
-          <div class="text-4xl font-bold text-emerald-400 mb-2">5-10x</div>
-          <p class="text-slate-300 font-semibold mb-4">ROI im ersten Jahr</p>
-          <p class="text-sm text-slate-400">Typisches Unternehmen spart €15-50K durch bessere Decisions</p>
-        </div>
-        <div class="bg-slate-800/70 border border-slate-700 rounded-2xl p-8">
-          <div class="text-4xl font-bold text-emerald-400 mb-2">80%</div>
-          <p class="text-slate-300 font-semibold mb-4">Zeitersparnis vs. Manual</p>
-          <p class="text-sm text-slate-400">20 Minuten statt 3-5 Tage pro komplexe Entscheidung</p>
-        </div>
-      </div>
-
-      <!-- Revenue Model -->
-      <div class="bg-slate-700/30 border border-slate-600 rounded-2xl p-8">
-        <h3 class="text-2xl font-bold mb-6">Typische Nutzer-Segmente & ROI</h3>
-        <div class="grid lg:grid-cols-2 gap-6">
-          <div class="border-l-4 border-indigo-500 pl-6">
-            <h4 class="text-lg font-semibold mb-2 text-indigo-300">💼 Unternehmer (€100K-1M Revenue)</h4>
-            <p class="text-sm text-slate-300 mb-2">Durchschnittliche Einsparungen pro Jahr:</p>
-            <p class="text-lg font-bold text-emerald-400">€12-25K</p>
-            <p class="text-xs text-slate-400 mt-2">(5-8 Decisions/Monat, €500-800 Nutzen pro Decision)</p>
-          </div>
-          <div class="border-l-4 border-indigo-500 pl-6">
-            <h4 class="text-lg font-semibold mb-2 text-indigo-300">🏢 Mid-Size Company (€1-50M Revenue)</h4>
-            <p class="text-sm text-slate-300 mb-2">Durchschnittliche Einsparungen pro Jahr:</p>
-            <p class="text-lg font-bold text-emerald-400">€50-150K</p>
-            <p class="text-xs text-slate-400 mt-2">(20-30 Strategic Decisions/Jahr, €3-5K Nutzen pro Decision)</p>
-          </div>
-          <div class="border-l-4 border-indigo-500 pl-6">
-            <h4 class="text-lg font-semibold mb-2 text-indigo-300">🎯 Freiberufler/Solopreneur</h4>
-            <p class="text-sm text-slate-300 mb-2">Durchschnittliche Einsparungen pro Jahr:</p>
-            <p class="text-lg font-bold text-emerald-400">€5-12K</p>
-            <p class="text-xs text-slate-400 mt-2">(Service-Selection, Pricing, Partner-Decisions)</p>
-          </div>
-          <div class="border-l-4 border-indigo-500 pl-6">
-            <h4 class="text-lg font-semibold mb-2 text-indigo-300">🏛️ Enterprise (€100M+)</h4>
-            <p class="text-sm text-slate-300 mb-2">Durchschnittliche Einsparungen pro Jahr:</p>
-            <p class="text-lg font-bold text-emerald-400">€200K-1M+</p>
-            <p class="text-xs text-slate-400 mt-2">(50+ Strategic Decisions, Governance-Optimization)</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing Section -->
-  <section id="pricing" class="py-24 px-4 bg-slate-800/30">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold text-center mb-16">Einfache Preismodelle</h2>
-
-      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <!-- Plan 1 -->
-        <div class="bg-slate-800/70 border border-slate-700 rounded-2xl p-8 hover:border-indigo-500 transition hover:shadow-xl">
-          <h3 class="text-2xl font-bold mb-2">Personal</h3>
-          <p class="text-slate-400 text-sm mb-6">Solopreneur, Freelancer</p>
-          <div class="mb-6">
-            <span class="text-4xl font-bold">€29</span>
-            <span class="text-slate-400">/Monat</span>
-          </div>
-          <ul class="space-y-3 text-sm text-slate-300 mb-8">
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> PMAS v2 Framework</li>
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> 3 Entscheidungen/Monat</li>
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Knowledge Graph (lokal)</li>
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Email Support</li>
-          </ul>
-          <button class="w-full bg-slate-700 hover:bg-slate-600 py-2 rounded-lg font-semibold transition">Kostenlos testen →</button>
-        </div>
-
-        <!-- Plan 2 (Popular) -->
-        <div class="bg-indigo-900/40 border border-indigo-500/50 rounded-2xl p-8 ring-2 ring-indigo-500 relative">
-          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Most Popular</div>
-          <h3 class="text-2xl font-bold mb-2">Professional</h3>
-          <p class="text-slate-400 text-sm mb-6">Teams bis 10 Personen</p>
-          <div class="mb-6">
-            <span class="text-4xl font-bold">€79</span>
-            <span class="text-slate-400">/Monat</span>
-          </div>
-          <ul class="space-y-3 text-sm text-slate-300 mb-8">
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Alles aus Personal +</li>
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Unlimited Entscheidungen</li>
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> RAPID Framework</li>
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Team Collaboration</li>
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Priority Support</li>
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> API Access</li>
-          </ul>
-          <button class="w-full bg-indigo-600 hover:bg-indigo-500 py-2 rounded-lg font-semibold transition">Jetzt starten →</button>
-        </div>
-
-        <!-- Plan 3 -->
-        <div class="bg-slate-800/70 border border-slate-700 rounded-2xl p-8 hover:border-indigo-500 transition hover:shadow-xl">
-          <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
-          <p class="text-slate-400 text-sm mb-6">Teams 10+ oder Custom</p>
-          <div class="mb-6">
-            <span class="text-4xl font-bold">€500+</span>
-            <span class="text-slate-400">/Monat</span>
-          </div>
-          <ul class="space-y-3 text-sm text-slate-300 mb-8">
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Alles aus Professional +</li>
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Dedicated Account Manager</li>
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Custom Integrations</li>
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> SLA Guarantee</li>
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> On-Prem Option</li>
-            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Compliance Support</li>
-          </ul>
-          <button class="w-full border border-slate-600 hover:border-indigo-400 py-2 rounded-lg font-semibold transition">Kontakt aufnehmen →</button>
-        </div>
-      </div>
-
-      <p class="text-center text-slate-400 mt-12 text-sm">Alle Pläne: 14-Tage kostenlos, keine Kreditkarte nötig</p>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section id="waitlist" class="py-24 px-4 gradient-bg">
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-6">Bereit für bessere Entscheidungen?</h2>
-      <p class="text-xl text-slate-300 mb-8">Tritt unserer Early Access List bei und spiele deine ersten 3 Entscheidungen kostenlos</p>
-
-      <form id="waitlist-form" class="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 backdrop-blur">
-        <div class="space-y-4">
-          <input type="email" placeholder="deine@email.de" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500" required>
-          <input type="text" placeholder="Dein Name" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500" required>
-          <select class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-indigo-500">
-            <option value="">Wer bist du?</option>
-            <option value="solopreneur">Solopreneur</option>
-            <option value="startup">Startup (2-10 Personen)</option>
-            <option value="sme">KMU (10-100 Personen)</option>
-            <option value="enterprise">Großunternehmen (100+)</option>
-            <option value="freelancer">Freiberufler</option>
+  <section class="waitlist-section" id="waitlist">
+    <div class="container">
+      <p class="section-label reveal">Get Early Access</p>
+      <h2 class="section-title reveal">Join the Waitlist</h2>
+      <p class="section-sub reveal">Be among the first to experience decision intelligence that compounds.</p>
+      <hr class="rule reveal" style="margin-bottom:52px;">
+      <div class="waitlist-box reveal">
+        <form id="waitlist-form" class="form-group">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="your@email.com" required>
+          <select name="role">
+            <option value="">Select your role...</option>
+            <option value="Founder">Founder / CEO</option>
+            <option value="Executive">Executive</option>
+            <option value="Manager">Manager</option>
+            <option value="Developer">Developer</option>
+            <option value="Creator">Creator</option>
+            <option value="Other">Other</option>
           </select>
-          <textarea placeholder="Was ist deine größte Entscheidungs-Challenge?" rows="4" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"></textarea>
-          <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 py-3 rounded-lg font-bold transition text-lg">Early Access bekommen →</button>
+          <textarea name="challenge" placeholder="What's your biggest decision challenge right now?"></textarea>
+          <button type="submit" class="btn-join">Join Waitlist</button>
+          <div id="form-error" class="form-error"></div>
+        </form>
+        <div id="form-success" class="form-success">
+          <h3>Welcome to LifeOS</h3>
+          <p>Check your email for early access details. You'll be among the first to experience decision intelligence.</p>
         </div>
-      </form>
-
-      <!-- Success Message -->
-      <div id="form-success" class="hidden bg-emerald-900/30 border border-emerald-700 rounded-2xl p-8 text-center">
-        <div class="text-5xl mb-4">🎉</div>
-        <h3 class="text-2xl font-bold text-emerald-400 mb-2">Willkommen an Board!</h3>
-        <p class="text-slate-300">Du bist auf der Early Access Liste. Wir melden uns innerhalb von 24 Stunden.</p>
       </div>
-
-      <!-- Error Message -->
-      <div id="form-error" class="hidden bg-red-900/30 border border-red-700 rounded-lg p-4 text-red-400 text-center mt-4"></div>
-
-      <p class="text-slate-400 text-sm mt-6">Wir senden dir einen Onboarding-Link innerhalb von 24 Stunden</p>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-slate-950 border-t border-slate-800 py-12 px-4">
-    <div class="max-w-7xl mx-auto text-center text-slate-400 text-sm">
-      <p>&copy; 2026 LifeOS. Alle Daten lokal, sichere Cloud-Integration optional.</p>
-      <div class="mt-4 space-x-6">
-        <a href="#" class="hover:text-indigo-400">Datenschutz</a>
-        <a href="#" class="hover:text-indigo-400">AGB</a>
-        <a href="#" class="hover:text-indigo-400">Kontakt</a>
+  <section class="features-section" id="features">
+    <div class="container">
+      <p class="section-label reveal">The System</p>
+      <h2 class="section-title reveal">How LifeOS Works</h2>
+      <hr class="rule reveal" style="margin: 20px auto 36px;">
+      <div class="features-grid reveal">
+        <div class="feature-card">
+          <div class="feature-num">I</div>
+          <h4>Data Layer</h4>
+          <p>Everything starts with facts. Your actual logs, decisions, outcomes — the complete record.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">II</div>
+          <h4>Knowledge Graph</h4>
+          <p>We map the causality. What truly predicts success? Which decisions compound? Where are the bottlenecks?</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">III</div>
+          <h4>Decision Engine</h4>
+          <p>AI + Framework. Not algorithms alone — human judgment augmented with causal reasoning.</p>
+        </div>
       </div>
     </div>
+  </section>
+
+  <section class="stack-section">
+    <div class="container">
+      <p class="section-label reveal">Proof Points</p>
+      <h2 class="section-title reveal">Why LifeOS Works</h2>
+      <hr class="rule reveal" style="margin: 20px auto 36px;">
+      <div class="stack-grid reveal">
+        <div class="stack-block">
+          <div class="stack-num">76%</div>
+          <div class="stack-label">Clarity Gain</div>
+          <div class="stack-desc">Decision quality measurable in 2 weeks</div>
+        </div>
+        <div class="stack-block">
+          <div class="stack-num">3×</div>
+          <div class="stack-label">Speed</div>
+          <div class="stack-desc">Problem diagnosis 3x faster than traditional analysis</div>
+        </div>
+        <div class="stack-block">
+          <div class="stack-num">∞</div>
+          <div class="stack-label">Compounds</div>
+          <div class="stack-desc">Each decision makes the next one easier</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="reveal">Ready for Decision Intelligence?</h2>
+      <p class="reveal">Your next decision will be different.</p>
+      <a href="#waitlist" class="btn-primary reveal"><span>Join the Waitlist</span></a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">LifeOS</div>
+    <div class="footer-name">Decision Intelligence Compound</div>
+    <div class="footer-links">
+      <a href="https://github.com/markslavinmarkslavin/lifeos-landing" target="_blank">GitHub</a>
+      <a href="https://github.com/markslavinmarkslavin/my-life-os" target="_blank">System</a>
+    </div>
+    <div class="footer-copy">© 2026 Mark Slavin. MIT License.</div>
   </footer>
 
-  <!-- Waitlist Form Handler -->
   <script>
+    // Scroll nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Reveal animations
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Waitlist form
     const waitlistForm = document.getElementById('waitlist-form');
     const formSuccess = document.getElementById('form-success');
     const formError = document.getElementById('form-error');
-    const submitBtn = waitlistForm?.querySelector('button[type="submit"]');
 
     if (waitlistForm) {
       waitlistForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        const email = waitlistForm.querySelector('input[type="email"]').value;
-        const name = waitlistForm.querySelector('input[type="text"]').value;
-        const role = waitlistForm.querySelector('select')?.value || '';
-        const challenge = waitlistForm.querySelector('textarea')?.value || '';
-        
+
+        const name = waitlistForm.querySelector('input[name="name"]').value;
+        const email = waitlistForm.querySelector('input[name="email"]').value;
+        const role = waitlistForm.querySelector('select[name="role"]').value || '';
+        const challenge = waitlistForm.querySelector('textarea[name="challenge"]').value || '';
+
+        const submitBtn = waitlistForm.querySelector('button[type="submit"]');
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Wird gesendet...';
-        formError?.classList.add('hidden');
-        
+        submitBtn.innerHTML = 'Sending...';
+        formError.style.display = 'none';
+
         try {
           const response = await fetch('/.netlify/functions/waitlist', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, name, role, challenge })
           });
-          
+
           const data = await response.json();
-          
+
           if (response.ok) {
-            waitlistForm.classList.add('hidden');
-            formSuccess?.classList.remove('hidden');
+            waitlistForm.style.display = 'none';
+            formSuccess.style.display = 'block';
           } else {
             throw new Error(data.error || 'Something went wrong');
           }
         } catch (error) {
-          formError.textContent = error.message || 'Fehler beim Senden. Bitte später erneut versuchen.';
-          formError?.classList.remove('hidden');
+          formError.textContent = error.message || 'Error submitting form. Please try again.';
+          formError.style.display = 'block';
           submitBtn.disabled = false;
-          submitBtn.innerHTML = 'Early Access bekommen →';
+          submitBtn.innerHTML = 'Join Waitlist';
         }
       });
     }
