@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "LifeOS Landing Page - Decision OS for Entrepreneurs",
   "scripts": {
-    "dev": "npx vercel dev",
-    "deploy": "npx vercel --prod"
+    "dev": "netlify dev",
+    "build": "echo 'no build needed'",
+    "test": "node netlify/functions/waitlist.js"
   },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.39.0",
-    "@vercel/node": "^3.0.0"
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
   }
 }
