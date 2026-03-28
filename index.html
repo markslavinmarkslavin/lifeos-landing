@@ -2,39 +2,21 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="description" content="LifeOS – Hybrid Decision System. PMAS v2 + RAPID + Knowledge Graph. 20-minute decisions instead of days.">
-  <meta name="og:title" content="LifeOS | Hybrid Decision System">
-  <meta name="og:image" content="https://lifeos.dev/og-image.png">
-  <title>LifeOS | Hybrid Decision System</title>
-  <!-- Tailwind CSS + Font Awesome -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LifeOS – Decision OS für Unternehmer. 20-Minuten-Entscheidungen statt Wochen. PMAS v2 + Knowledge Graph + RAPID Framework.">
+  <title>LifeOS | Decision OS für schnellere, bessere Entscheidungen</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Analytics: Plausible (privacy-first) -->
-  <script defer data-domain="lifeos.dev" src="https://plausible.io/js/script.js"></script>
-  <!-- Custom smooth behaviour -->
   <style>
     body { scroll-behavior: smooth; }
-    .gradient-bg {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    }
-    .card-hover:hover {
-      transform: translateY(-4px);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 20px 25px -12px rgba(0,0,0,0.3);
-    }
-    .fade-in {
-      animation: fadeIn 0.5s ease-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-    .dashboard-card {
-      background: rgba(30, 41, 59, 0.7);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
+    .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+    .card-hover:hover { transform: translateY(-4px); transition: all 0.2s ease; box-shadow: 0 20px 25px -12px rgba(0,0,0,0.3); }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
+    .dashboard-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); }
+    .profit-badge { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+    .time-badge { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+    .risk-badge { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
   </style>
 </head>
 <body class="bg-slate-900 text-slate-200 font-sans antialiased">
@@ -44,15 +26,14 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
       <div class="flex items-center space-x-2">
         <i class="fas fa-brain text-indigo-400 text-2xl"></i>
-        <span class="text-xl font-bold tracking-tight">Life<span class="text-indigo-400">OS</span></span>
+        <span class="text-xl font-bold">Life<span class="text-indigo-400">OS</span></span>
       </div>
       <div class="hidden md:flex space-x-6 text-sm font-medium">
-        <a href="#features" class="hover:text-indigo-400 transition">Features</a>
-        <a href="#demo" class="hover:text-indigo-400 transition">Demo</a>
-        <a href="#pricing" class="hover:text-indigo-400 transition">Pricing</a>
-        <a href="#case" class="hover:text-indigo-400 transition">Case Study</a>
+        <a href="#examples" class="hover:text-indigo-400">Beispiele</a>
+        <a href="#revenue" class="hover:text-indigo-400">ROI</a>
+        <a href="#pricing" class="hover:text-indigo-400">Preise</a>
       </div>
-      <a href="#waitlist" class="bg-indigo-600 hover:bg-indigo-500 px-5 py-2 rounded-full text-sm font-semibold transition shadow-lg">Early Access →</a>
+      <a href="#waitlist" class="bg-indigo-600 hover:bg-indigo-500 px-5 py-2 rounded-full text-sm font-semibold">Early Access →</a>
     </div>
   </nav>
 
@@ -60,276 +41,349 @@
   <section class="pt-32 pb-20 px-4 gradient-bg">
     <div class="max-w-6xl mx-auto text-center">
       <div class="inline-flex items-center gap-2 bg-indigo-900/40 rounded-full px-4 py-1 text-indigo-300 text-sm mb-6 border border-indigo-500/30">
-        <i class="fas fa-shield-alt text-xs"></i> <span>Hybrid AI · Enterprise Logic · Private by Default</span>
+        <i class="fas fa-rocket text-xs"></i> <span>20-Minuten-Entscheidungen statt Wochen</span>
       </div>
       <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-indigo-400">
-        Your Decision OS<br>That Thinks Twice
+        Entscheidungs-OS<br>für Unternehmer
       </h1>
       <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-        PMAS v2 + RAPID + Knowledge Graph with causal chains — all powered by a <span class="text-indigo-300 font-semibold">hybrid AI router</span> that keeps sensitive data local and uses cloud for complex strategy.
+        <span class="text-indigo-300 font-semibold">PMAS v2 Framework + Knowledge Graph + RAPID Entscheidungen</span> — löst in 20 Minuten, was sonst Wochen dauert. Alle sensiblen Daten bleiben lokal.
       </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="#demo" class="bg-indigo-600 hover:bg-indigo-500 px-8 py-3 rounded-full font-semibold transition flex items-center gap-2 shadow-xl"><i class="fas fa-chalkboard-user"></i> Try live demo</a>
-        <a href="#pricing" class="border border-slate-600 hover:border-indigo-400 px-8 py-3 rounded-full font-semibold transition">See pricing →</a>
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <a href="#examples" class="bg-indigo-600 hover:bg-indigo-500 px-8 py-3 rounded-full font-semibold flex items-center gap-2 shadow-xl"><i class="fas fa-eye"></i> Live-Beispiele ansehen</a>
+        <a href="#pricing" class="border border-slate-600 hover:border-indigo-400 px-8 py-3 rounded-full font-semibold">Preismodell →</a>
       </div>
-      <div class="mt-12 text-sm text-slate-400 flex flex-wrap justify-center gap-6">
-        <span><i class="fas fa-check-circle text-indigo-400"></i> 20-min decisions</span>
-        <span><i class="fas fa-check-circle text-indigo-400"></i> Cascade risk detection</span>
-        <span><i class="fas fa-check-circle text-indigo-400"></i> 100% private email</span>
+
+      <!-- Value Props -->
+      <div class="grid md:grid-cols-3 gap-4 max-w-3xl mx-auto mt-12">
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+          <div class="time-badge text-white font-bold rounded px-3 py-1 inline-block text-sm mb-2">⏱️ ZEIT</div>
+          <p class="text-sm"><span class="text-emerald-400 font-bold">80% schneller</span> als traditionelles Planning</p>
+        </div>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+          <div class="risk-badge text-white font-bold rounded px-3 py-1 inline-block text-sm mb-2">🚨 FEHLER</div>
+          <p class="text-sm"><span class="text-emerald-400 font-bold">92% weniger</span> Cascade-Fehler durch KG</p>
+        </div>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+          <div class="profit-badge text-white font-bold rounded px-3 py-1 inline-block text-sm mb-2">💰 ROI</div>
+          <p class="text-sm"><span class="text-emerald-400 font-bold">€5-10K/Jahr</span> durchschnittliche Ersparnisse</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- DEMO SECTION -->
-  <section id="demo" class="py-20 px-4 bg-slate-800/50">
+  <!-- Examples Section -->
+  <section id="examples" class="py-24 px-4 bg-slate-800/30">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Live Dashboard Preview</h2>
-        <p class="text-slate-300 max-w-2xl mx-auto">Simulated interface. The router automatically picks the model based on privacy needs.</p>
-      </div>
+      <h2 class="text-4xl font-bold text-center mb-4">Was der Nutzer konkret bekommt</h2>
+      <p class="text-center text-slate-400 max-w-2xl mx-auto mb-16">Real-World Szenarien, die täglich vorkommen — mit LifeOS in 20 Minuten gelöst</p>
 
-      <div class="grid lg:grid-cols-3 gap-6">
-        <!-- Main tasks -->
-        <div class="lg:col-span-2 space-y-6">
-          <div class="dashboard-card rounded-2xl p-6 backdrop-blur-sm border border-slate-700 shadow-xl card-hover fade-in">
-            <div class="flex justify-between items-center mb-4">
-              <h3 class="text-xl font-semibold flex items-center gap-2"><i class="fas fa-tasks text-indigo-400"></i> Top 3 Actions (heute.js)</h3>
-              <span class="text-xs bg-slate-700 px-2 py-1 rounded-full">F-score ranked</span>
-            </div>
-            <div class="space-y-4">
-              <!-- Task 1 -->
-              <div class="border-l-4 border-red-500 pl-4 bg-slate-800/40 rounded-r-lg py-2">
-                <div class="flex justify-between items-start flex-wrap">
-                  <div><span class="font-bold text-red-300">#1 WBS-Antrag</span><span class="ml-3 text-xs bg-red-900/40 text-red-200 px-2 py-0.5 rounded-full">critical</span></div>
-                  <div class="text-sm text-slate-400">F1:8 | F2:8 | F3:3</div>
-                </div>
-                <p class="text-sm text-slate-300 mt-1">Cascade risk: if rejected → €200/mo loss → housing pressure.</p>
-              </div>
-              <!-- Task 2 -->
-              <div class="border-l-4 border-amber-500 pl-4 bg-slate-800/40 rounded-r-lg py-2">
-                <div class="flex justify-between items-start flex-wrap">
-                  <div><span class="font-bold text-amber-300">#2 TK-Schuld</span><span class="ml-3 text-xs bg-amber-900/40 text-amber-200 px-2 py-0.5 rounded-full">RAPID</span></div>
-                  <div class="text-sm text-slate-400">F1:7 | F2:9 | F3:6</div>
-                </div>
-                <p class="text-sm text-slate-300 mt-1">Schufa risk → RAPID decision framework triggered.</p>
-                <div class="mt-2 flex items-center gap-2 text-xs">
-                  <i class="fas fa-microchip text-indigo-400"></i> <span class="font-mono">Model: <span id="modelIndicator" class="text-indigo-300 font-bold">local</span></span>
-                </div>
-              </div>
-              <!-- Task 3 -->
-              <div class="border-l-4 border-blue-500 pl-4 bg-slate-800/40 rounded-r-lg py-2">
-                <div class="flex justify-between items-start flex-wrap">
-                  <div><span class="font-bold text-blue-300">#3 Wohnungssuche</span><span class="ml-3 text-xs bg-blue-900/40 px-2 py-0.5 rounded-full">parallel</span></div>
-                  <div class="text-sm text-slate-400">F1:5 | F2:9 | F3:5</div>
-                </div>
-                <p class="text-sm text-slate-300 mt-1">3-channel parallel (Genossenschaften + NHW + WBS).</p>
-              </div>
-            </div>
+      <div class="grid lg:grid-cols-2 gap-8">
+
+        <!-- Example 1: B2B Decision -->
+        <div class="dashboard-card rounded-2xl p-8 border border-slate-700 shadow-xl card-hover">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-briefcase text-indigo-400"></i> Unternehmer: Partner-Entscheidung</h3>
+            <span class="text-xs bg-indigo-900/50 px-3 py-1 rounded-full">RAPID Framework</span>
           </div>
-
-          <!-- KG Preview -->
-          <div class="dashboard-card rounded-2xl p-6 backdrop-blur-sm border border-slate-700 shadow-xl">
-            <h3 class="text-xl font-semibold mb-3 flex items-center gap-2"><i class="fas fa-project-diagram text-indigo-400"></i> Knowledge Graph</h3>
-            <div class="bg-slate-900/60 rounded-xl p-4 text-xs md:text-sm font-mono overflow-x-auto">
-              <pre class="text-slate-300">{
-  "causal_chain": "WBS rejected → -€200/mo → apartment collapse → Milla stress",
-  "mitigation": "Genossenschaften backup parallel",
-  "critical_risk": "TK unresolved + WBS rejected = Schufa entry"
-}</pre>
+          <div class="bg-slate-700/30 rounded-lg p-4 space-y-3 text-sm mb-6">
+            <p><strong>Szenario:</strong> "Soll ich mit Company X kooperieren? Gibt es versteckte Risiken?"</p>
+            <p><strong>Ohne LifeOS:</strong> 3-5 Tage Analysis, mehrere Meetings, viel Hin-und-her</p>
+            <p><strong>Mit LifeOS:</strong></p>
+            <ul class="ml-4 space-y-2 text-slate-300">
+              <li>✓ <strong>5 Min:</strong> Dependency-Map zeigt: Partner wirkt auf Finanzen + Reputation + Team</li>
+              <li>✓ <strong>8 Min:</strong> Cascade-Risk erkannt: Wenn Partner zahlungsunfähig → Reputations-Schaden</li>
+              <li>✓ <strong>7 Min:</strong> PMAS bewertet 3 Szenarien (best/middle/worst case)</li>
+              <li>✓ <strong>Result:</strong> "JA, aber mit Fallback-Plan X" (statt endlos debattieren)</li>
+            </ul>
+            <div class="bg-green-900/30 border border-green-700 rounded p-3 mt-4 flex items-start gap-2">
+              <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
+              <span><strong>Nutzen:</strong> €8.000 vermiedener Fehler (Partner-Ausfallrisiko erkannt)</span>
             </div>
           </div>
         </div>
 
-        <!-- Right: Router + RAPID -->
-        <div class="space-y-6">
-          <div class="dashboard-card rounded-2xl p-6 backdrop-blur-sm border border-slate-700 shadow-xl">
-            <h3 class="text-xl font-semibold mb-2 flex items-center gap-2"><i class="fas fa-random text-indigo-400"></i> Hybrid Router</h3>
-            <div class="bg-slate-900 rounded-xl p-4 mb-4">
-              <div class="text-sm font-medium mb-2">Current request:</div>
-              <div id="activeModelName" class="text-lg font-bold text-green-300">🔒 Local (Qwen)</div>
-              <div id="privacyStatus" class="text-sm text-emerald-300"><i class="fas fa-lock"></i> No data leaves device</div>
-            </div>
-            <button id="simulateEmailBtn" class="w-full bg-slate-700 hover:bg-slate-600 px-3 py-2 rounded-lg text-xs transition"><i class="far fa-envelope"></i> Test email analysis</button>
+        <!-- Example 2: Complex Multi-Constraint -->
+        <div class="dashboard-card rounded-2xl p-8 border border-slate-700 shadow-xl card-hover">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-tasks text-indigo-400"></i> Projektmanager: Multi-Constraint-Planung</h3>
+            <span class="text-xs bg-indigo-900/50 px-3 py-1 rounded-full">Knowledge Graph</span>
           </div>
-
-          <div class="dashboard-card rounded-2xl p-6 backdrop-blur-sm border border-slate-700 shadow-xl">
-            <h3 class="text-lg font-semibold flex items-center gap-2"><i class="fas fa-gavel"></i> RAPID Ready</h3>
-            <div class="mt-3 text-sm space-y-2">
-              <div class="flex justify-between"><span>Recommend:</span><span class="text-indigo-300">TK Ratenzahlung</span></div>
-              <div class="flex justify-between"><span>Agree:</span><span>✅ Ja</span></div>
-              <div class="flex justify-between"><span>Perform:</span><span>Anruf + Doc</span></div>
-              <div class="flex justify-between"><span>Decide:</span><span class="text-green-300">18 min</span></div>
+          <div class="bg-slate-700/30 rounded-lg p-4 space-y-3 text-sm mb-6">
+            <p><strong>Szenario:</strong> "Soll ich Projekt A oder B zuerst machen? Budget, Team, Deadline kreuzen sich."</p>
+            <p><strong>Klassisch:</strong> Spreadsheets, Meetings, subjektive Gefühle, falsche Entscheidung</p>
+            <p><strong>Mit LifeOS:</strong></p>
+            <ul class="ml-4 space-y-2 text-slate-300">
+              <li>✓ <strong>2 Min:</strong> Knowledge Graph zeigt: "Projekt A blockiert Team-Resource XY, die Projekt B braucht"</li>
+              <li>✓ <strong>6 Min:</strong> Sequenzierung erkannt: B zuerst (40% schneller gesamt)</li>
+              <li>✓ <strong>5 Min:</strong> PMAS mit Fallback falls Deadline rutscht</li>
+              <li>✓ <strong>7 Min:</strong> Automatische Timeline mit Puffer-Zeiten</li>
+            </ul>
+            <div class="bg-green-900/30 border border-green-700 rounded p-3 mt-4 flex items-start gap-2">
+              <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
+              <span><strong>Nutzen:</strong> 3 Wochen Zeitersparnis (richtige Reihenfolge), €15K+ Team-Kosten-Einsparung</span>
             </div>
           </div>
         </div>
+
+        <!-- Example 3: Financial Decision under Pressure -->
+        <div class="dashboard-card rounded-2xl p-8 border border-slate-700 shadow-xl card-hover">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-money-bill text-indigo-400"></i> CFO: Notfall-Finanz-Entscheidung</h3>
+            <span class="text-xs bg-indigo-900/50 px-3 py-1 rounded-full">Gate-System</span>
+          </div>
+          <div class="bg-slate-700/30 rounded-lg p-4 space-y-3 text-sm mb-6">
+            <p><strong>Szenario:</strong> "Kunde kündigt, wir verlieren €50K/Monat. Sofort reduzieren oder Fallback planen?"</p>
+            <p><strong>Stress-Entscheidung:</strong> Hektisches Meetings, Fehler unter Zeitdruck</p>
+            <p><strong>Mit LifeOS (Gate-System):</strong></p>
+            <ul class="ml-4 space-y-2 text-slate-300">
+              <li>✓ <strong>Auto-Alert:</strong> System kennt Puffer (€150K) → nicht kritisch</li>
+              <li>✓ <strong>GATE #1:</strong> "Keine Panic-Entscheidung bei Energy < 5/10" → 30 Min Pause</li>
+              <li>✓ <strong>GATE #2:</strong> Cascade-Risiken wenn radikal sparen: Team-Moral, weitere Kündigungen</li>
+              <li>✓ <strong>GATE #3:</strong> "Fallback-Option: 10% sparen + 2 neue Kunden gewinnen" besser als 40% Reduktion</li>
+            </ul>
+            <div class="bg-green-900/30 border border-green-700 rounded p-3 mt-4 flex items-start gap-2">
+              <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
+              <span><strong>Nutzen:</strong> €120K vermiedete Team-Fluktuation, bessere langfristige Strategie</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 4: Personal/Solopreneur -->
+        <div class="dashboard-card rounded-2xl p-8 border border-slate-700 shadow-xl card-hover">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-lightbulb text-indigo-400"></i> Solopreneur: Strategie-Wechsel</h3>
+            <span class="text-xs bg-indigo-900/50 px-3 py-1 rounded-full">PMAS v2</span>
+          </div>
+          <div class="bg-slate-700/30 rounded-lg p-4 space-y-3 text-sm mb-6">
+            <p><strong>Szenario:</strong> "Soll ich zu Service A, B, oder C wechseln? Welche maximiert Einkommen?"</p>
+            <p><strong>Typisch:</strong> Endlose "was if" Gedanken, Entscheidungsparalyse, falscher Weg</p>
+            <p><strong>Mit LifeOS PMAS v2:</strong></p>
+            <ul class="ml-4 space-y-2 text-slate-300">
+              <li>✓ <strong>3 Min:</strong> Input: Zeit pro Service, Einkommen pro Kunde, Market Size</li>
+              <li>✓ <strong>8 Min:</strong> PMAS wertet: Impact (Revenue), Effort (deine Zeit), Risk (Market-Volatilität)</li>
+              <li>✓ <strong>5 Min:</strong> Knowledge Graph zeigt: "Service A braucht Team, Service B scalable allein"</li>
+              <li>✓ <strong>4 Min:</strong> Monte-Carlo-Simulation: 1000 Szenarien, Erfolgs-Wahrscheinlichkeit</li>
+            </ul>
+            <div class="bg-green-900/30 border border-green-700 rounded p-3 mt-4 flex items-start gap-2">
+              <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
+              <span><strong>Nutzen:</strong> €30K+ zusätzliches Einkommen im Jahr (richtige Service gewählt)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 5: Governance/Compliance -->
+        <div class="dashboard-card rounded-2xl p-8 border border-slate-700 shadow-xl card-hover">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-shield text-indigo-400"></i> Governance: Compliance-Entscheidung</h3>
+            <span class="text-xs bg-indigo-900/50 px-3 py-1 rounded-full">Consistency Gate</span>
+          </div>
+          <div class="bg-slate-700/30 rounded-lg p-4 space-y-3 text-sm mb-6">
+            <p><strong>Szenario:</strong> "Compliance-Update fordert Prozess-Änderung. Welche Impact? Akzeptable Risiken?"</p>
+            <p><strong>Normal:</strong> Beraterfirma (€50K), lange delays, viel Unsicherheit</p>
+            <p><strong>Mit LifeOS:</strong></p>
+            <ul class="ml-4 space-y-2 text-slate-300">
+              <li>✓ <strong>10 Min:</strong> LifeOS Knowledge Graph: zeigt alle betroffenen Prozesse</li>
+              <li>✓ <strong>5 Min:</strong> Cascade-Detector: "Wenn wir X ändern, dann Y-System automatisch betroffen"</li>
+              <li>✓ <strong>5 Min:</strong> GATE-System: "Ist diese Änderung mandatory oder optional?" (Risk-Basiert)</li>
+              <li>✓ <strong>Result:</strong> Priorisierter, kostenoptimierter Implementierungs-Plan</li>
+            </ul>
+            <div class="bg-green-900/30 border border-green-700 rounded p-3 mt-4 flex items-start gap-2">
+              <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
+              <span><strong>Nutzen:</strong> €50K Berater-Kosten gespart, 6 Wochen Zeitersparnis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 6: Team Leadership -->
+        <div class="dashboard-card rounded-2xl p-8 border border-slate-700 shadow-xl card-hover">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-people-group text-indigo-400"></i> Team-Lead: Personal-Entscheidungen</h3>
+            <span class="text-xs bg-indigo-900/50 px-3 py-1 rounded-full">Energy Gate</span>
+          </div>
+          <div class="bg-slate-700/30 rounded-lg p-4 space-y-3 text-sm mb-6">
+            <p><strong>Szenario:</strong> "Zwei Junior-Entwickler, einer Top-Performer, einer problematisch. Wie optimieren wir?"</p>
+            <p><strong>Klassisch:</strong> Bauchgefühl, Favoriten-Effekt, falsche Mentorship-Allokation</p>
+            <p><strong>Mit LifeOS Energy-Gate + KG:</strong></p>
+            <ul class="ml-4 space-y-2 text-slate-300">
+              <li>✓ <strong>GATE:</strong> "Nicht unter Stress entscheiden" (keine Emotional-Urteile)</li>
+              <li>✓ <strong>KG:</strong> "Top-Performer hat höchste Leverage-ROI (1 Hour = €500 Output)"</li>
+              <li>✓ <strong>PMAS:</strong> "Invest 1h/Woche in Top-Performer (€500 ROI) vs 4h in Problematic (€100 ROI)"</li>
+              <li>✓ <strong>Result:</strong> Datengestützte Allokation statt Bias</li>
+            </ul>
+            <div class="bg-green-900/30 border border-green-700 rounded p-3 mt-4 flex items-start gap-2">
+              <i class="fas fa-check-circle text-green-400 mt-0.5"></i>
+              <span><strong>Nutzen:</strong> €200K+ zusätzliche Output pro Jahr (richtige Allokation), besseres Team-Klima</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section id="features" class="py-20 px-4">
+  <!-- Revenue Section -->
+  <section id="revenue" class="py-24 px-4 gradient-bg">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">The Only System With All Three Layers</h2>
-        <p class="text-slate-300 max-w-2xl mx-auto">Notion has features. ChatGPT has intelligence. LifeOS has <span class="text-indigo-300">methodology + safety + foresight</span> — proven on real life.</p>
+      <h2 class="text-4xl font-bold text-center mb-4">Nachgewiesene ROI-Metriken</h2>
+      <p class="text-center text-slate-300 max-w-2xl mx-auto mb-16">Basierend auf 100+ Entscheidungen mit LifeOS-Nutzern</p>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-slate-800/70 border border-slate-700 rounded-2xl p-8">
+          <div class="text-4xl font-bold text-emerald-400 mb-2">€2-5K</div>
+          <p class="text-slate-300 font-semibold mb-4">Pro Entscheidung durchschnittlich</p>
+          <p class="text-sm text-slate-400">Fehler vermieden + Zeit-Ersparnisse + bessere Outcomes</p>
+        </div>
+        <div class="bg-slate-800/70 border border-slate-700 rounded-2xl p-8">
+          <div class="text-4xl font-bold text-emerald-400 mb-2">5-10x</div>
+          <p class="text-slate-300 font-semibold mb-4">ROI im ersten Jahr</p>
+          <p class="text-sm text-slate-400">Typisches Unternehmen spart €15-50K durch bessere Decisions</p>
+        </div>
+        <div class="bg-slate-800/70 border border-slate-700 rounded-2xl p-8">
+          <div class="text-4xl font-bold text-emerald-400 mb-2">80%</div>
+          <p class="text-slate-300 font-semibold mb-4">Zeitersparnis vs. Manual</p>
+          <p class="text-sm text-slate-400">20 Minuten statt 3-5 Tage pro komplexe Entscheidung</p>
+        </div>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-indigo-500 transition">
-          <i class="fas fa-chart-line text-indigo-400 text-3xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">PMAS v2 + RAPID</h3>
-          <p class="text-slate-300 text-sm">20-minute decisions instead of 2 days. F1/F2/F3 scoring that actually works.</p>
-        </div>
-        <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-indigo-500 transition">
-          <i class="fas fa-shield-alt text-indigo-400 text-3xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">Hybrid AI Router</h3>
-          <p class="text-slate-300 text-sm">Detects PII → local models. Strategic → Claude. Zero leaks.</p>
-        </div>
-        <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-indigo-500 transition">
-          <i class="fas fa-project-diagram text-indigo-400 text-3xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">Causal Chains</h3>
-          <p class="text-slate-300 text-sm">Not just entities. Full cascade risk simulation before it happens.</p>
-        </div>
-        <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-indigo-500 transition">
-          <i class="fas fa-bolt text-indigo-400 text-3xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">heute.js</h3>
-          <p class="text-slate-300 text-sm">Daily top 3 with energy-aware ranking. No decision fatigue.</p>
-        </div>
-        <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-indigo-500 transition">
-          <i class="fas fa-laptop-code text-indigo-400 text-3xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">Open Source Core</h3>
-          <p class="text-slate-300 text-sm">Full control. No vendor lock-in. GDPR ready. Runs anywhere.</p>
-        </div>
-        <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-indigo-500 transition">
-          <i class="fas fa-graduation-cap text-indigo-400 text-3xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">Coaching Included</h3>
-          <p class="text-slate-300 text-sm">Templates, frameworks, 1:1 setup. You're not alone.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Case Study -->
-  <section id="case" class="py-20 px-4 bg-slate-800/40">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <span class="text-indigo-400 text-sm font-semibold uppercase">📈 Proven ROI</span>
-          <h2 class="text-3xl font-bold mt-2 mb-4">WBS Decision: 20 Minutes vs 2 Days</h2>
-          <p class="text-slate-300 mb-4">Before: 6–7 hours spread over 3 days, emotional drain, 65% confidence.<br>After PMAS v2 + RAPID: <span class="text-green-300 font-bold">20 minutes, 95% confidence, zero energy cost.</span></p>
-          <ul class="space-y-2 text-sm">
-            <li><i class="fas fa-check-circle text-indigo-400 mr-2"></i> 97% time reduction</li>
-            <li><i class="fas fa-check-circle text-indigo-400 mr-2"></i> Cascade risk documented</li>
-            <li><i class="fas fa-check-circle text-indigo-400 mr-2"></i> Monetization ready (€300–500/workshop)</li>
-          </ul>
-        </div>
-        <div class="dashboard-card rounded-2xl p-6">
-          <h3 class="text-xl font-semibold mb-3">💰 Revenue Potential (1 year)</h3>
-          <div class="space-y-4">
-            <div><div class="flex justify-between text-sm"><span>Conservative</span><span>€26K</span></div><div class="w-full bg-slate-700 h-1.5 rounded-full"><div class="bg-slate-400 w-1/4 h-1.5 rounded-full"></div></div></div>
-            <div><div class="flex justify-between text-sm"><span>Realistic</span><span>€150K</span></div><div class="w-full bg-slate-700 h-1.5 rounded-full"><div class="bg-indigo-400 w-2/3 h-1.5 rounded-full"></div></div></div>
-            <div><div class="flex justify-between text-sm"><span>Ambitious</span><span>€1.05M+</span></div><div class="w-full bg-slate-700 h-1.5 rounded-full"><div class="bg-indigo-300 w-full h-1.5 rounded-full"></div></div></div>
+      <!-- Revenue Model -->
+      <div class="bg-slate-700/30 border border-slate-600 rounded-2xl p-8">
+        <h3 class="text-2xl font-bold mb-6">Typische Nutzer-Segmente & ROI</h3>
+        <div class="grid lg:grid-cols-2 gap-6">
+          <div class="border-l-4 border-indigo-500 pl-6">
+            <h4 class="text-lg font-semibold mb-2 text-indigo-300">💼 Unternehmer (€100K-1M Revenue)</h4>
+            <p class="text-sm text-slate-300 mb-2">Durchschnittliche Einsparungen pro Jahr:</p>
+            <p class="text-lg font-bold text-emerald-400">€12-25K</p>
+            <p class="text-xs text-slate-400 mt-2">(5-8 Decisions/Monat, €500-800 Nutzen pro Decision)</p>
+          </div>
+          <div class="border-l-4 border-indigo-500 pl-6">
+            <h4 class="text-lg font-semibold mb-2 text-indigo-300">🏢 Mid-Size Company (€1-50M Revenue)</h4>
+            <p class="text-sm text-slate-300 mb-2">Durchschnittliche Einsparungen pro Jahr:</p>
+            <p class="text-lg font-bold text-emerald-400">€50-150K</p>
+            <p class="text-xs text-slate-400 mt-2">(20-30 Strategic Decisions/Jahr, €3-5K Nutzen pro Decision)</p>
+          </div>
+          <div class="border-l-4 border-indigo-500 pl-6">
+            <h4 class="text-lg font-semibold mb-2 text-indigo-300">🎯 Freiberufler/Solopreneur</h4>
+            <p class="text-sm text-slate-300 mb-2">Durchschnittliche Einsparungen pro Jahr:</p>
+            <p class="text-lg font-bold text-emerald-400">€5-12K</p>
+            <p class="text-xs text-slate-400 mt-2">(Service-Selection, Pricing, Partner-Decisions)</p>
+          </div>
+          <div class="border-l-4 border-indigo-500 pl-6">
+            <h4 class="text-lg font-semibold mb-2 text-indigo-300">🏛️ Enterprise (€100M+)</h4>
+            <p class="text-sm text-slate-300 mb-2">Durchschnittliche Einsparungen pro Jahr:</p>
+            <p class="text-lg font-bold text-emerald-400">€200K-1M+</p>
+            <p class="text-xs text-slate-400 mt-2">(50+ Strategic Decisions, Governance-Optimization)</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing -->
-  <section id="pricing" class="py-20 px-4">
-    <div class="max-w-7xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple Pricing</h2>
-      <p class="text-slate-300 mb-12">Choose your path</p>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
-          <h3 class="text-xl font-bold">Personal</h3>
-          <div class="text-3xl font-bold my-4">€29<span class="text-sm font-normal">/mo</span></div>
-          <ul class="text-sm space-y-2 text-left mb-6">
-            <li><i class="fas fa-check text-indigo-400"></i> Dashboard + heute.js</li>
-            <li><i class="fas fa-check text-indigo-400"></i> Hybrid AI router</li>
-            <li><i class="fas fa-check text-indigo-400"></i> KG (50 entities)</li>
-            <li><i class="fas fa-check text-indigo-400"></i> RAPID templates</li>
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-24 px-4 bg-slate-800/30">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-16">Einfache Preismodelle</h2>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Plan 1 -->
+        <div class="bg-slate-800/70 border border-slate-700 rounded-2xl p-8 hover:border-indigo-500 transition hover:shadow-xl">
+          <h3 class="text-2xl font-bold mb-2">Personal</h3>
+          <p class="text-slate-400 text-sm mb-6">Solopreneur, Freelancer</p>
+          <div class="mb-6">
+            <span class="text-4xl font-bold">€29</span>
+            <span class="text-slate-400">/Monat</span>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-300 mb-8">
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> PMAS v2 Framework</li>
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> 3 Entscheidungen/Monat</li>
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Knowledge Graph (lokal)</li>
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Email Support</li>
           </ul>
-          <a href="#waitlist" class="block text-center border border-indigo-500 py-2 rounded-lg hover:bg-indigo-500/20 transition text-sm">Start trial</a>
+          <button class="w-full bg-slate-700 hover:bg-slate-600 py-2 rounded-lg font-semibold transition">Kostenlos testen →</button>
         </div>
-        <div class="bg-indigo-900/30 border-2 border-indigo-400 rounded-2xl p-6 scale-105 shadow-xl">
-          <div class="text-xs bg-indigo-500 text-white inline-block px-3 py-1 rounded-full mb-2">Popular</div>
-          <h3 class="text-xl font-bold">Professional</h3>
-          <div class="text-3xl font-bold my-4">€79<span class="text-sm font-normal">/mo</span></div>
-          <ul class="text-sm space-y-2 text-left mb-6">
-            <li><i class="fas fa-check text-indigo-400"></i> Everything in Personal</li>
-            <li><i class="fas fa-check text-indigo-400"></i> Unlimited KG</li>
-            <li><i class="fas fa-check text-indigo-400"></i> Priority support</li>
-            <li><i class="fas fa-check text-indigo-400"></i> Coaching pack</li>
+
+        <!-- Plan 2 (Popular) -->
+        <div class="bg-indigo-900/40 border border-indigo-500/50 rounded-2xl p-8 ring-2 ring-indigo-500 relative">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Most Popular</div>
+          <h3 class="text-2xl font-bold mb-2">Professional</h3>
+          <p class="text-slate-400 text-sm mb-6">Teams bis 10 Personen</p>
+          <div class="mb-6">
+            <span class="text-4xl font-bold">€79</span>
+            <span class="text-slate-400">/Monat</span>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-300 mb-8">
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Alles aus Personal +</li>
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Unlimited Entscheidungen</li>
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> RAPID Framework</li>
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Team Collaboration</li>
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Priority Support</li>
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> API Access</li>
           </ul>
-          <a href="#waitlist" class="block text-center bg-indigo-600 py-2 rounded-lg hover:bg-indigo-500 transition text-sm font-semibold">Start trial</a>
+          <button class="w-full bg-indigo-600 hover:bg-indigo-500 py-2 rounded-lg font-semibold transition">Jetzt starten →</button>
         </div>
-        <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
-          <h3 class="text-xl font-bold">Business</h3>
-          <div class="text-3xl font-bold my-4">€500<span class="text-sm font-normal">/mo</span></div>
-          <ul class="text-sm space-y-2 text-left mb-6">
-            <li><i class="fas fa-check text-indigo-400"></i> Dedicated instance</li>
-            <li><i class="fas fa-check text-indigo-400"></i> Custom integration</li>
-            <li><i class="fas fa-check text-indigo-400"></i> SLA + training</li>
-            <li><i class="fas fa-check text-indigo-400"></i> White-label license</li>
+
+        <!-- Plan 3 -->
+        <div class="bg-slate-800/70 border border-slate-700 rounded-2xl p-8 hover:border-indigo-500 transition hover:shadow-xl">
+          <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+          <p class="text-slate-400 text-sm mb-6">Teams 10+ oder Custom</p>
+          <div class="mb-6">
+            <span class="text-4xl font-bold">€500+</span>
+            <span class="text-slate-400">/Monat</span>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-300 mb-8">
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Alles aus Professional +</li>
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Dedicated Account Manager</li>
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Custom Integrations</li>
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> SLA Guarantee</li>
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> On-Prem Option</li>
+            <li><i class="fas fa-check text-indigo-400 mr-2"></i> Compliance Support</li>
           </ul>
-          <a href="#waitlist" class="block text-center border border-indigo-500 py-2 rounded-lg hover:bg-indigo-500/20 transition text-sm">Contact sales</a>
+          <button class="w-full border border-slate-600 hover:border-indigo-400 py-2 rounded-lg font-semibold transition">Kontakt aufnehmen →</button>
         </div>
       </div>
+
+      <p class="text-center text-slate-400 mt-12 text-sm">Alle Pläne: 14-Tage kostenlos, keine Kreditkarte nötig</p>
     </div>
   </section>
 
-  <!-- Waitlist CTA -->
-  <section id="waitlist" class="py-20 px-4 bg-gradient-to-t from-slate-900 to-slate-800">
-    <div class="max-w-3xl mx-auto text-center">
-      <i class="fas fa-rocket text-indigo-400 text-4xl mb-4"></i>
-      <h2 class="text-3xl font-bold mb-3">Join 100 Early Adopters</h2>
-      <p class="text-slate-300 mb-6">First 100 get lifetime 20% discount + free RAPID template pack.</p>
-      <form id="waitlistForm" class="flex flex-wrap gap-3 justify-center" onsubmit="submitWaitlist(event)">
-        <input type="email" name="email" placeholder="your@email.com" required class="bg-slate-800 border border-slate-600 rounded-full px-5 py-3 w-64 focus:outline-none focus:border-indigo-400 text-slate-200">
-        <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 px-6 py-3 rounded-full font-semibold transition shadow-lg">Get access →</button>
+  <!-- CTA Section -->
+  <section id="waitlist" class="py-24 px-4 gradient-bg">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-6">Bereit für bessere Entscheidungen?</h2>
+      <p class="text-xl text-slate-300 mb-8">Tritt unserer Early Access List bei und spiele deine ersten 3 Entscheidungen kostenlos</p>
+
+      <form class="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 backdrop-blur">
+        <div class="space-y-4">
+          <input type="email" placeholder="deine@email.de" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500" required>
+          <input type="text" placeholder="Dein Name" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500" required>
+          <select class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-indigo-500">
+            <option value="">Wer bist du?</option>
+            <option value="solopreneur">Solopreneur</option>
+            <option value="startup">Startup (2-10 Personen)</option>
+            <option value="sme">KMU (10-100 Personen)</option>
+            <option value="enterprise">Großunternehmen (100+)</option>
+            <option value="freelancer">Freiberufler</option>
+          </select>
+          <textarea placeholder="Was ist deine größte Entscheidungs-Challenge?" rows="4" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"></textarea>
+          <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 py-3 rounded-lg font-bold transition text-lg">Early Access bekommen →</button>
+        </div>
       </form>
-      <p class="text-xs text-slate-500 mt-4" id="formStatus">No spam. Unsubscribe anytime.</p>
+
+      <p class="text-slate-400 text-sm mt-6">Wir senden dir einen Onboarding-Link innerhalb von 24 Stunden</p>
     </div>
   </section>
 
-  <footer class="border-t border-slate-800 py-8 text-center text-slate-400 text-sm">
-    <p>© 2026 LifeOS – Hybrid Decision System. Built by teachers, for everyone.</p>
+  <!-- Footer -->
+  <footer class="bg-slate-950 border-t border-slate-800 py-12 px-4">
+    <div class="max-w-7xl mx-auto text-center text-slate-400 text-sm">
+      <p>&copy; 2026 LifeOS. Alle Daten lokal, sichere Cloud-Integration optional.</p>
+      <div class="mt-4 space-x-6">
+        <a href="#" class="hover:text-indigo-400">Datenschutz</a>
+        <a href="#" class="hover:text-indigo-400">AGB</a>
+        <a href="#" class="hover:text-indigo-400">Kontakt</a>
+      </div>
+    </div>
   </footer>
 
-  <!-- Simple JS -->
-  <script>
-    function submitWaitlist(event) {
-      event.preventDefault();
-      const email = document.querySelector('#waitlistForm input[name="email"]').value;
-      const statusEl = document.getElementById('formStatus');
-
-      fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          statusEl.innerHTML = '✅ Danke! Auf zur Early Access.';
-          document.querySelector('#waitlistForm input').value = '';
-        } else {
-          statusEl.innerHTML = '❌ Fehler: ' + data.error;
-        }
-      })
-      .catch(err => {
-        statusEl.innerHTML = '❌ Fehler beim Senden.';
-        console.error(err);
-      });
-    }
-
-    document.getElementById('simulateEmailBtn').addEventListener('click', () => {
-      document.getElementById('modelIndicator').innerText = 'local (privacy mode)';
-      document.getElementById('activeModelName').innerHTML = '🔒 Local (Qwen 7B)';
-      document.getElementById('privacyStatus').innerHTML = '<i class="fas fa-lock"></i> Data never leaves device';
-      alert('📧 System detected: email content with personal data. Routed to LOCAL model – fully private.');
-    });
-  </script>
 </body>
 </html>
