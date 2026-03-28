@@ -1,0 +1,13 @@
+{
+  "name": "lifeos-landing",
+  "version": "1.0.0",
+  "description": "LifeOS Landing Page - Decision OS for Entrepreneurs",
+  "scripts": {
+    "dev": "npx vercel dev",
+    "deploy": "npx vercel --prod"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "@vercel/node": "^3.0.0"
+  }
+}
